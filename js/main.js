@@ -49,8 +49,14 @@ function observerWatch(pageSectionElements) {
         updateElementAttribute(wrapperElement, index);
         /* Statue animation */
         const statue = pageSectionElements[index - 1].querySelector('.section-statue');
+
         if (statue) {
           statue.classList.add('is-animated');
+        }
+
+        /* Lazy load */
+        if(pageSectionElements[index] && pageSectionElements[index].querySelector('.statue')) {
+          pageSectionElements[index].querySelector('.section-statue').removeAttribute('loading');
         }
 
 
@@ -90,18 +96,6 @@ function updateElementAttribute(element, attrName) {
   if (element) {
     element.dataset.currentSection = attrName;
   }
-}
-
-/* Preloader */
-window.addEventListener("load", () => {
-  hidePreloader();
-});
-
-function hidePreloader() {
-  setTimeout(() => {
-    document.querySelector(".preloader").style.display = "none";
-    document.body.style.overflow = "auto";
-  }, 1000);
 }
 
 /* Hash scroll */
@@ -147,16 +141,15 @@ function setCallendlyEvents(popup) {
 }
 
 window.addEventListener("load", () => {
-  hidePreloader();
+  onWindowLoad();
   loadCalendly();
 });
 
 
 /* Preloader */
 
-function hidePreloader() {
+function onWindowLoad() {
   setTimeout(() => {
-    document.querySelector(".preloader").style.display = "none";
     document.body.style.overflow = "auto";
   }, 1000);
 }
