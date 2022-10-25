@@ -19,6 +19,9 @@
   <meta name="msapplication-TileColor" content="#da532c">
   <meta name="theme-color" content="#ffffff">
 
+  <!-- Preload -->
+  <link href="https://assets.calendly.com/assets/external/widget.js" rel="preload" as="script">
+
   <!-- Links -->
   <link rel="stylesheet" href="./css/libs/grid.css">
   <link rel="stylesheet" href="./css/style.css" />
@@ -111,7 +114,7 @@
           <div class="col-md-6">
             <picture>
               <source srcset="./img/trading-page/1-web.png" media="(min-width: 1200px)">
-              <img class="info-image" src="./img/trading-page/1-mob.png" alt="">
+              <img loading="lazy"  class="info-image" src="./img/trading-page/1-mob.png" alt="">
             </picture>
           </div>
           <div class="col-md-6  d-flex justify-content-lg-center">
@@ -140,7 +143,7 @@
           <div class="col-md-6">
             <picture>
               <source srcset="./img/trading-page/2-web.png" media="(min-width: 1200px)">
-              <img class="info-image" src="./img/trading-page/2-mob.png" alt="">
+              <img loading="lazy"  class="info-image" src="./img/trading-page/2-mob.png" alt="">
             </picture>
           </div>
           <div class="col-md-6  d-flex justify-content-lg-center">
@@ -169,7 +172,7 @@
           <div class="col-md-6">
             <picture>
               <source srcset="./img/trading-page/3-web.png" media="(min-width: 1200px)">
-              <img class="info-image" src="./img/trading-page/3-mob.png" alt="">
+              <img loading="lazy"  class="info-image" src="./img/trading-page/3-mob.png" alt="">
             </picture>
           </div>
           <div class="col-md-6  d-flex justify-content-lg-center">
@@ -201,7 +204,7 @@
           <div class="col-md-6">
             <picture>
               <source srcset="./img/trading-page/4-web.png" media="(min-width: 1200px)">
-              <img class="info-image" src="./img/trading-page/4-mob.png" alt="">
+              <img loading="lazy"  class="info-image" src="./img/trading-page/4-mob.png" alt="">
             </picture>
           </div>
           <div class="col-md-6  d-flex justify-content-lg-center">
@@ -244,7 +247,7 @@
           <div class="col-md-5">
             <picture>
               <source srcset="./img/trading-page/action-image-web.png" media="(min-width: 1200px)">
-              <img class="action-image" src="./img/trading-page/action-image-mob.png" alt="">
+              <img loading="lazy"  class="action-image" src="./img/trading-page/action-image-mob.png" alt="">
             </picture>
           </div>
         </div>
@@ -299,6 +302,14 @@
   </div>
   <!-- End wrapper -->
 
+  <!-- Calendly inline widget begin -->
+  <script async src="https://assets.calendly.com/assets/external/widget.js"></script>
+
+  <div class="calendly-popup">
+    <button class="calendly-close-button"></button>
+  </div>
+
+  <!-- Calendly inline widget end -->
   <!-- JavaScript -->
   <script src="./js/main.js"></script>
 
