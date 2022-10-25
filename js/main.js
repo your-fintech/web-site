@@ -94,11 +94,15 @@ function updateElementAttribute(element, attrName) {
 
 /* Preloader */
 window.addEventListener("load", () => {
+  hidePreloader();
+});
+
+function hidePreloader() {
   setTimeout(() => {
     document.querySelector(".preloader").style.display = "none";
     document.body.style.overflow = "auto";
   }, 1000);
-});
+}
 
 /* Hash scroll */
 window.addEventListener("DOMContentLoaded", () => {
@@ -111,15 +115,21 @@ window.addEventListener("DOMContentLoaded", () => {
 });
 
 /* Calendly form */
+function loadCalendly() {
+  const script = document.createElement("script");
+  script.src = "https://assets.calendly.com/assets/external/widget.js";
+  script.async = true;
+  document.getElementsByTagName("head")[0].appendChild(script);
+  script.addEventListener("load",initCalendly);
+}
 
-function renderCalendly() {
+function initCalendly() {
   const widgetUrl = "https://calendly.com/yft_/meeting";
   const calendlyPopup = document.querySelector(".calendly-popup");
   Calendly.initInlineWidget({
     url: widgetUrl,
     parentElement: calendlyPopup,
   });
-
   setCallendlyEvents(calendlyPopup);
 }
 
@@ -128,10 +138,7 @@ function setCallendlyEvents(popup) {
     button.addEventListener("click", () => {
       popup.classList.add("is-active");
       popup.querySelector(".calendly-close-button").addEventListener(
-        "click",
-        (evt) => {
-          popup.classList.remove("is-active");
-        }, {
+        "click",() => popup.classList.remove("is-active"), {
           once: true
         }
       );
@@ -139,7 +146,17 @@ function setCallendlyEvents(popup) {
   });
 }
 
-
-window.addEventListener("load", renderCalendly, {
-  once: true
+window.addEventListener("load", () => {
+  hidePreloader();
+  loadCalendly();
 });
+
+
+/* Preloader */
+
+function hidePreloader() {
+  setTimeout(() => {
+    document.querySelector(".preloader").style.display = "none";
+    document.body.style.overflow = "auto";
+  }, 1000);
+}
