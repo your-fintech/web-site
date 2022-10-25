@@ -49,8 +49,14 @@ function observerWatch(pageSectionElements) {
         updateElementAttribute(wrapperElement, index);
         /* Statue animation */
         const statue = pageSectionElements[index - 1].querySelector('.section-statue');
+
         if (statue) {
           statue.classList.add('is-animated');
+        }
+
+        /* Lazy load */
+        if(pageSectionElements[index] && pageSectionElements[index].querySelector('.statue')) {
+          pageSectionElements[index].querySelector('.section-statue').removeAttribute('loading');
         }
 
 
@@ -92,14 +98,6 @@ function updateElementAttribute(element, attrName) {
   }
 }
 
-/* Preloader */
-window.addEventListener("load", () => {
-  setTimeout(() => {
-    document.querySelector(".preloader").style.display = "none";
-    document.body.style.overflow = "auto";
-  }, 1000);
-});
-
 /* Hash scroll */
 window.addEventListener("DOMContentLoaded", () => {
   const pageHash = window.location.hash.slice(1);
@@ -111,15 +109,21 @@ window.addEventListener("DOMContentLoaded", () => {
 });
 
 /* Calendly form */
+function loadCalendly() {
+  const script = document.createElement("script");
+  script.src = "https://assets.calendly.com/assets/external/widget.js";
+  script.async = true;
+  document.getElementsByTagName("head")[0].appendChild(script);
+  script.addEventListener("load",initCalendly);
+}
 
-function renderCalendly() {
+function initCalendly() {
   const widgetUrl = "https://calendly.com/yft_/meeting";
   const calendlyPopup = document.querySelector(".calendly-popup");
   Calendly.initInlineWidget({
     url: widgetUrl,
     parentElement: calendlyPopup,
   });
-
   setCallendlyEvents(calendlyPopup);
 }
 
@@ -128,10 +132,7 @@ function setCallendlyEvents(popup) {
     button.addEventListener("click", () => {
       popup.classList.add("is-active");
       popup.querySelector(".calendly-close-button").addEventListener(
-        "click",
-        (evt) => {
-          popup.classList.remove("is-active");
-        }, {
+        "click",() => popup.classList.remove("is-active"), {
           once: true
         }
       );
@@ -139,7 +140,16 @@ function setCallendlyEvents(popup) {
   });
 }
 
-
-window.addEventListener("load", renderCalendly, {
-  once: true
+window.addEventListener("load", () => {
+  onWindowLoad();
+  loadCalendly();
 });
+
+
+/* Preloader */
+
+function onWindowLoad() {
+  setTimeout(() => {
+    document.body.style.overflow = "auto";
+  }, 1000);
+}
