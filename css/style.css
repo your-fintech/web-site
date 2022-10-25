@@ -649,6 +649,10 @@ body {
   background-image: url("data:image/svg+xml,%3Csvg width='11' height='4' viewBox='0 0 11 4' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M10.156 2L7.65601 0.556624V3.44338L10.156 2ZM0.599609 2.25H7.90601V1.75H0.599609V2.25Z' fill='white'/%3E%3C/svg%3E%0A");
 }
 
+.button-light:hover {
+  background-color: rgba(var(--light-rgb), 0.1);
+}
+
 .button-accent {
   color: var(--accent);
   background-color: var(--light);
@@ -2027,6 +2031,10 @@ body {
 
   .index-section-1 .section-content img {
     margin-left: -20px;
+  }
+
+  .index-section-1 .section-content .section-title {
+    font-size: 24px;
   }
 
   .index-section-3 .section-statue {
