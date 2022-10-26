@@ -131,6 +131,8 @@ function setCallendlyEvents(popup) {
   document.querySelectorAll('[data-action="form"]').forEach((button) => {
     button.addEventListener("click", () => {
       popup.classList.add("is-active");
+      
+      /* Popup button close handler */
       popup.querySelector(".calendly-close-button").addEventListener(
         "click",() => popup.classList.remove("is-active"), {
           once: true
@@ -151,5 +153,14 @@ window.addEventListener("load", () => {
 function onWindowLoad() {
   setTimeout(() => {
     document.body.style.overflow = "auto";
+    removeLoadingLazyAttribute();
   }, 1000);
+}
+
+function removeLoadingLazyAttribute() {
+  if(document.querySelectorAll('img[loading="lazy"]')){
+    document.querySelectorAll('img[loading="lazy"]').forEach((img) => {
+      img.removeAttribute('loading');
+    });
+  }
 }
