@@ -426,7 +426,7 @@ template {
   --offset: 10px;
   --default-offset: 40px;
   --page-height: 812px;
-  --easing: all 0.35s ease-in;
+  --easing: all 0.75s ease;
   --opacity: 0.7;
   --section-bg-1: linear-gradient(252.44deg, #100C31 0%, #000000 100%);
   --section-bg-2: linear-gradient(107.56deg, #4881EF 0%, #3F28F0 100%);
@@ -633,7 +633,7 @@ body {
 }
 
 .button:hover {
-  background-color: rgba(var(--dark-rgb), 0.1);
+  background-color: rgba(var(--dark-rgb), 0.2);
 }
 
 .button[disabled] {
@@ -650,7 +650,7 @@ body {
 }
 
 .button-light:hover {
-  background-color: rgba(var(--light-rgb), 0.1);
+  background-color: rgba(var(--light-rgb), 0.2);
 }
 
 .button-accent {
@@ -663,7 +663,7 @@ body {
 }
 
 .button-accent:hover {
-  background-color: rgba(var(--dark-rgb), 0.1);
+  background-color: rgba(var(--light-rgb), 0.1);
 }
 
 .scroll-button {
@@ -930,6 +930,7 @@ body {
   -webkit-animation-fill-mode: forwards;
   animation-fill-mode: forwards;
   animation-delay: var(--animation-delay);
+  will-change: transform, opacity;
 }
 
 .section-statue-1 {
@@ -984,12 +985,14 @@ body {
 
 .section-content p {
   max-width: 432px;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
   font-weight: 600;
   font-size: 10px;
 }
 
-/* Landscape styles */
+.section-content p:last-of-type {
+  margin-bottom: 20px;
+}
 
 /* Map section */
 
@@ -1007,10 +1010,12 @@ body {
   margin-bottom: 15px;
 }
 
-.map-section .section-content p {
+.map-section .section-content .section-title {
   max-width: 767px;
   font-weight: 500;
   font-size: 14px;
+  text-transform: none;
+  line-height: initial;
 }
 
 /* Story section */
@@ -1321,6 +1326,10 @@ body {
   scroll-snap-align: center;
 }
 
+.footer .row {
+  align-items: center;
+}
+
 .footer-logo {
   display: block;
 }
@@ -1445,13 +1454,13 @@ body {
 
 .calendly-close-button {
   position: absolute;
-  top: var(--bs-gutter-x);
-  right: var(--bs-gutter-x);
+  top: 0;
+  left:0 ;
   display: flex;
-  justify-content: center;
+  justify-content: flex-end;
   align-items: center;
-  width: 40px;
-  height: 40px;
+  width: 100%;
+  height: 60px;
 }
 
 .calendly-close-button:hover {
@@ -1461,6 +1470,8 @@ body {
 .calendly-close-button:before,
 .calendly-close-button:after {
   content: " ";
+  top: var(--bs-gutter-x);
+  right: var(--bs-gutter-x);
   position: absolute;
   width: 2px;
   height: 33px;
@@ -2072,7 +2083,7 @@ body {
     margin-bottom: 30px;
   }
 
-  .map-section .section-content p {
+  .map-section .section-content .section-title {
     max-width: 568px;
     font-size: 24px;
   }
@@ -2252,6 +2263,10 @@ body {
     left: 0;
   }
 
+  .index-section-3 .section-content .section-pretitle {
+    font-size: 16px;
+  }
+
   .index-section-5 .section-content {
     left: 40%;
   }
@@ -2278,7 +2293,7 @@ body {
     padding-bottom: 130px;
   }
 
-  .map-section .section-content p {
+  .map-section .section-content .section-title {
     max-width: 767px;
     font-size: 32px;
   }
@@ -2532,11 +2547,12 @@ body {
 
 @media (max-width: 767px) {
   .index-section-1 .button {
-    min-width: 166px;
+    width: 166px;
+    height: 55px;
     margin-left: auto;
-    padding: 20px;
-    border: 0.5px solid #ffffff;
-    border-radius: 150px 100px 100px 0;
+    padding: 20px 40px;
+    border: 0;
+    background: url(../img/icons/mob-button-decor.svg) no-repeat center / contain;
   }
 
   .index-section-1 .button::after {
@@ -2555,3 +2571,22 @@ body {
     animation: none;
   }
 }
+
+
+/* Small height mob device */
+
+@media (max-height: 750px) and (max-width: 420px) {
+    .map-section {
+      padding-bottom: 185px;
+    }
+
+    .team {
+      padding-top: 200px;
+      padding-bottom: 20px;
+    }
+
+    .team .team-user {
+      margin-bottom: 20px;
+    }
+}
+
