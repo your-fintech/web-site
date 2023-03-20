@@ -1225,6 +1225,13 @@ body {
   margin-right: 10px;
 }
 
+
+.features-card-icon img {
+  height: 100%;
+  object-fit: contain;
+  object-position: top;
+} 
+
 .features-card .features-card-title {
   margin-bottom: 6px;
   font-size: 11px;
@@ -1234,6 +1241,11 @@ body {
 .features-card p {
   font-weight: 600;
   font-size: 9px;
+}
+
+.features-card-content {
+  max-width: 600px;
+  width: 100%;
 }
 
 /*=============================================
@@ -2196,6 +2208,7 @@ body {
 
   .features-card .features-card-icon {
     width: 60px;
+    height: 80px;
     margin-right: 20px;
   }
 
@@ -2347,6 +2360,7 @@ body {
 
   .features-card .features-card-icon {
     width: 100px;
+    height: 120px;
     margin-right: 40px;
   }
 
